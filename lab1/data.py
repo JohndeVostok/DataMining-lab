@@ -1,5 +1,5 @@
 import re
-import cPickle
+import pickle
 import numpy as np
 
 NFILE = 300
@@ -24,4 +24,4 @@ for index in range(NFILE):
 		data[word][-1][1] += 1;
 
 with open("data.pkl", "wb") as f:
-	cPickle.dump((wordCount, data), f)
+	pickle.dump((wordCount, data), f)
