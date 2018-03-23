@@ -344,6 +344,19 @@ Cdist
 23 0.73420
 ```
 
+## 实验过程
+
+```shell
+$ python3 data.py
+$ python3 tf_idf.py
+$ python3 common.py
+
+$ python3 tf_idf_file.py
+
+$ g++ common.cpp -o common.bin
+$ ./common.bin
+```
+
 ## 实验总结
 
 经过这个小实验，简单了解了词袋模型的使用情况，亲身体验了这种模型不靠谱的地方，为后续学习打下了坚实的基础，并让我对后续的文本处理算法有了更多的兴趣。
