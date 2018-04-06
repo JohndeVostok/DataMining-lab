@@ -2,6 +2,11 @@ import os
 from datetime import date
 import xml.etree.ElementTree as et
 import nltk
+import re
+
+import pickle
+
+import nltk.stem
 
 rootPath = "nyt_corpus/samples_500/"
 
@@ -36,17 +41,27 @@ def search(node, attrs):
 
 if (__name__ == "__main__"):
     fileList = os.listdir(rootPath)
+    attrList = []
     for fileName in fileList:
         filePath = os.path.join(rootPath, fileName)
         tree = et.parse(filePath)
         root = tree.getroot()
-        attrs = {}
+        attrList.append({})
+        attrs = attrList[len(attrList) - 1]
         attrs["date"] = date(2000, 12, 31)
         attrs["text"] = ""
         attrs["tags"] = []
         search(root, attrs)
 
         tokens = [word for sent in nltk.sent_tokenize(attrs["text"]) for word in nltk.word_tokenize(sent)]
-        print(tokens);
+        filteredTokens = []
+        for token in tokens:
+            if re.search("[a-zA-Z]", token):
+                filteredTokens.append(re.sub("[^a-zA-Z]", "", token))
 
-        break
+        stemmer = nltk.stem.SnowballStemmer('english')
+        stems = [stemmer.stem(t) for t in filteredTokens]
+        attrs["stems"] = stems
+
+with open("attr.pkl", "wb") as f:
+    pickle.dump(attrList, f)
