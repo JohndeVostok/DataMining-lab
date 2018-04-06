@@ -1,6 +1,5 @@
 *.out
 *~
 *.pyc
-*.txt
 *.bak
 *.swp
