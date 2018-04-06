@@ -348,6 +348,24 @@ plt.close(1)
 
 这种情况可看出，两种方式生成的二位散点图分布较为类似。
 
+## 运行过程
+
+环境依赖: python3.6
+包: matplotlib sklearn scipy numpy
+
+```shell
+python init.py
+python bow.py
+python cloud.py
+python length.py
+python binning.py
+python tags.py
+python date.py
+python reduction.py
+```
+
+中间生成文件: attr.pkl fullText.txt
+
 ## 实验总结
 
 在这个实验中，我一开始使用了R语言，但是R语言的学习成本较高。关键对于我们来说，他的组织方式比较奇怪，不太像传统的编程语言。所以我在学习一段时间之后选择换回python。因此耽误了一些时间。
